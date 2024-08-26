@@ -17,7 +17,7 @@ Description:
     - Intermediate-standard
     Experimental data for the time, volume filtered, and initial 
     volumetric flow rate was obtained from the dataset provided by 
-    Mayani et al. (2023).
+    Mayani et al. (2023) for lentiviral vector clarification.
 
 References:
     - Bolton, G., LaCasse, D., and Kuriyel, R. (2006). Combined models 
@@ -317,7 +317,9 @@ class IntermediateStandardModel(BaseModel):
 
 
 # Instantiate, fit, and output the results for each model
-models = [Model(tdata, vdata, J0) for Model in BaseModel.__subclasses__()]
+models: list[BaseModel] = [
+    Model(tdata, vdata, J0) for Model in BaseModel.__subclasses__()
+]
 for model in models:
     model.fit()
     model.mse()
