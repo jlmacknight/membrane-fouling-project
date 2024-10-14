@@ -15,7 +15,9 @@ from visualization import plot_fitted_models
 J0 = 0.0008
 
 
-def fit_and_evaluate_models(tdata: np.ndarray, vdata: np.ndarray, J0: float) -> list:
+def fit_and_evaluate_models(
+    tdata: np.ndarray, vdata: np.ndarray, J0: float
+) -> list[BaseModel]:
     """
     Fit all models to the data and calculate their MSE.
 
@@ -25,7 +27,8 @@ def fit_and_evaluate_models(tdata: np.ndarray, vdata: np.ndarray, J0: float) -> 
         J0 (float): Initial volumetric flow rate.
 
     Returns:
-        list: A list of fitted models.
+        list[BaseModel]: A list of model objects that have been fitted to experimental 
+        data and MSE calculated.
     """
     models = [Model(tdata, vdata, J0) for Model in BaseModel.__subclasses__()]
 
