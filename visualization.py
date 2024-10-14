@@ -2,7 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_fitted_models(tdata: np.ndarray, vdata: np.ndarray, models: list) -> None:
+def plot_fitted_models(
+    tdata: np.ndarray, vdata: np.ndarray, models: list[BaseModel]
+) -> None:
     """
     Plot experimental data along with the fitted models.
 
