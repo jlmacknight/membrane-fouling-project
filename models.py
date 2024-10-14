@@ -20,7 +20,7 @@ class BaseModel:
         pcov (Optional[numpy.ndarray]): Covariance matrix of the parameters after curve fitting (initialized as None).
         _mse (Optional[float]): Mean squared error of the model (initialized as None).
         param_names (tuple[str]): Names of the model parameters.
-    
+
     Methods:
         fit() -> None:
             Fits the model to the experimental data using curve fitting.
@@ -87,6 +87,9 @@ class BaseModel:
         Calculate the mean squared error of the model predictions
         against the actual data.
 
+        Parameters:
+            None
+
         Returns:
             float: Mean squared error.
         """
@@ -121,6 +124,13 @@ class BaseModel:
 class CakeCompleteModel(BaseModel):
     """
     Model representing cake filtration, complete blocking.
+
+    Attributes:
+        param_names (tuple[str]): Names of model parameters specific to cake-complete.
+
+    Methods:
+        model(self, t: np.ndarray, Kb: float, Kc: float) -> numpy.ndarray:
+            Cake-complete model function, used for SciPy curve fitting and prediction.
     """
 
     param_names: tuple[str] = ("Kb", "Kc")
@@ -149,6 +159,13 @@ class CakeCompleteModel(BaseModel):
 class CakeIntermediateModel(BaseModel):
     """
     Model representing cake filtration, intermediate blocking.
+
+    Attributes:
+        param_names (tuple[str]): Names of model parameters specific to cake-intermediate.
+
+    Methods:
+        model(self, t: np.ndarray, Kc: float, Ki: float) -> numpy.ndarray:
+            Cake-intermediate model function, used for SciPy curve fitting and prediction.
     """
 
     param_names: tuple[str] = ("Kc", "Ki")
@@ -174,6 +191,13 @@ class CakeIntermediateModel(BaseModel):
 class CakeStandardModel(BaseModel):
     """
     Model representing cake filtration, standard blocking.
+    
+    Attributes:
+        param_names (tuple[str]): Names of model parameters specific to cake-standard.
+
+    Methods:
+        model(self, t: np.ndarray, Kc: float, Ks: float) -> numpy.ndarray:
+            Cake-standard model function, used for SciPy curve fitting and prediction.
     """
 
     param_names: tuple[str] = ("Kc", "Ks")
@@ -209,6 +233,13 @@ class CakeStandardModel(BaseModel):
 class CompleteStandardModel(BaseModel):
     """
     Model representing complete blocking, standard blocking.
+    
+    Attributes:
+        param_names (tuple[str]): Names of model parameters specific to complete-standard.
+
+    Methods:
+        model(self, t: np.ndarray, Kb: float, Ks: float) -> numpy.ndarray:
+            Complete-standard model function, used for SciPy curve fitting and prediction.
     """
 
     param_names: tuple[str] = ("Kb", "Ks")
@@ -232,6 +263,13 @@ class CompleteStandardModel(BaseModel):
 class IntermediateStandardModel(BaseModel):
     """
     Model representing intermediate blocking, standard blocking.
+    
+    Attributes:
+        param_names (tuple[str]): Names of model parameters specific to intermediate-standard.
+
+    Methods:
+        model(self, t: np.ndarray, Ki: float, Ks: float) -> numpy.ndarray:
+            Intermediate-standard model function, used for SciPy curve fitting and prediction.
     """
 
     param_names: tuple[str] = ("Ki", "Ks")
