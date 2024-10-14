@@ -19,7 +19,7 @@ class BaseModel:
         params (Optional[numpy.ndarray]): Fitted model parameters after curve fitting (initialized as None).
         pcov (Optional[numpy.ndarray]): Covariance matrix of the parameters after curve fitting (initialized as None).
         _mse (Optional[float]): Mean squared error of the model (initialized as None).
-        param_names (tuple[str]): Names of the model parameters.
+        param_names (tuple[str, str]): Names of the model parameters.
 
     Methods:
         fit() -> None:
@@ -126,7 +126,7 @@ class CakeCompleteModel(BaseModel):
     Model representing cake filtration, complete blocking.
 
     Attributes:
-        param_names (tuple[str]): Names of model parameters specific to cake-complete.
+        param_names (tuple[str, str]): Names of model parameters specific to cake-complete.
 
     Methods:
         model(self, t: np.ndarray, Kb: float, Kc: float) -> numpy.ndarray:
@@ -161,7 +161,7 @@ class CakeIntermediateModel(BaseModel):
     Model representing cake filtration, intermediate blocking.
 
     Attributes:
-        param_names (tuple[str]): Names of model parameters specific to cake-intermediate.
+        param_names (tuple[str, str]): Names of model parameters specific to cake-intermediate.
 
     Methods:
         model(self, t: np.ndarray, Kc: float, Ki: float) -> numpy.ndarray:
@@ -193,7 +193,7 @@ class CakeStandardModel(BaseModel):
     Model representing cake filtration, standard blocking.
     
     Attributes:
-        param_names (tuple[str]): Names of model parameters specific to cake-standard.
+        param_names (tuple[str, str]): Names of model parameters specific to cake-standard.
 
     Methods:
         model(self, t: np.ndarray, Kc: float, Ks: float) -> numpy.ndarray:
@@ -235,7 +235,7 @@ class CompleteStandardModel(BaseModel):
     Model representing complete blocking, standard blocking.
     
     Attributes:
-        param_names (tuple[str]): Names of model parameters specific to complete-standard.
+        param_names (tuple[str, str]): Names of model parameters specific to complete-standard.
 
     Methods:
         model(self, t: np.ndarray, Kb: float, Ks: float) -> numpy.ndarray:
@@ -265,7 +265,7 @@ class IntermediateStandardModel(BaseModel):
     Model representing intermediate blocking, standard blocking.
     
     Attributes:
-        param_names (tuple[str]): Names of model parameters specific to intermediate-standard.
+        param_names (tuple[str, str]): Names of model parameters specific to intermediate-standard.
 
     Methods:
         model(self, t: np.ndarray, Ki: float, Ks: float) -> numpy.ndarray:
