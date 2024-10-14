@@ -12,10 +12,26 @@ class BaseModel:
     fitting models, predicting values, and calculating mean squared
     error.
 
-    Parameters:
+    Attributes:
         tdata (numpy.ndarray): Experimental time data.
         vdata (numpy.ndarray): Experimental volume filtered data.
         J0 (float): Initial experimental volumetric flow rate.
+        params (Optional[numpy.ndarray]): Fitted model parameters after curve fitting (initialized as None).
+        pcov (Optional[numpy.ndarray]): Covariance matrix of the parameters after curve fitting (initialized as None).
+        _mse (Optional[float]): Mean squared error of the model (initialized as None).
+        param_names (tuple[str]): Names of the model parameters.
+    
+    Methods:
+        fit() -> None:
+            Fits the model to the experimental data using curve fitting.
+            Handles exceptions such as runtime errors.
+
+        predict(t: numpy.ndarray) -> numpy.ndarray:
+            Predicts volume filtered data using the fitted model and provided time data.
+
+        mse() -> float:
+            Calculates and returns the mean squared error (MSE) of the model's predictions
+            against the actual experimental data.
     """
 
     tdata: np.ndarray
